@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
-        <activity android:name=".playerScreen"></activity>
+        <activity android:name=".gameActivity"></activity>
+        <activity android:name=".playerScreen" />
         <activity android:name=".Menu" />
         <activity android:name=".MainActivity">
             <intent-filter>
