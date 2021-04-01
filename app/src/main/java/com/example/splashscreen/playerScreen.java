@@ -35,7 +35,7 @@ public class playerScreen extends AppCompatActivity {
         boolean butoane[]= new boolean[10];     ///vector pt verificarea vizibilitatii butoanelor aka cati playeri sunt
         butoane[0]=TRUE;
         butoane[1]=TRUE;
-        String nume[]=new String[10];
+
 
         EditText et[]= new EditText[10];
          et[2]= findViewById(R.id.editTextTextPersonName2);
@@ -127,12 +127,22 @@ public class playerScreen extends AppCompatActivity {
         startGame.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view){
-                for(int i = 0; i<=4; i++){
+                int l=0;
+                for(int i = 0;i<=4;i++){
+                    if(butoane[i]==TRUE){
+                        l++;
+                    }
+                }
+                String[] nume= new String[l];
+                for(int i = 0; i<l; i++){
                     if(butoane[i]==TRUE){      ///verifica daca exista jucatorul respectiv
                         nume[i]= et[i+2].getText().toString();
+                        nume[i].toUpperCase().charAt(0);
 
                     }
                 }
+
+
                 Intent intent = new Intent(playerScreen.this, gameActivity.class);
                 intent.putExtra("NUME", nume);   ///paseaza vectoru de nume catre urmat activitate
                 startActivity(intent);
