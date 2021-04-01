@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
-        <activity android:name=".gameActivity"></activity>
+        <activity android:name=".gameActivity"
+            android:screenOrientation="sensorLandscape" />
+
+
         <activity android:name=".playerScreen" />
         <activity android:name=".Menu" />
         <activity android:name=".MainActivity">
