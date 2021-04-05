@@ -1,10 +1,12 @@
 package com.example.splashscreen;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -12,9 +14,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class gameActivity extends AppCompatActivity {
+    private int i=1;
+    private String replace_name(String intrebareInlocuita, ArrayList<String> nume){
+        Collections.shuffle(nume);
+        intrebareInlocuita=intrebareInlocuita.replaceAll("\\*", nume.get(0));
+        intrebareInlocuita=intrebareInlocuita.replaceAll("\\$",nume.get(1));
+        return intrebareInlocuita;
+
+    }
+
+    private ArrayList<String> random_intrebari(ArrayList<String> intrebari){
+        Collections.shuffle(intrebari);
+        return intrebari;
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,32 +48,44 @@ public class gameActivity extends AppCompatActivity {
 
         //hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        String[] nume = getIntent().getStringArrayExtra("NUME");
+        ArrayList<String> nume = getIntent().getStringArrayListExtra("NUME");
 
-        TextView test= (TextView)findViewById(R.id.textView3);
+        TextView textBox= (TextView)findViewById(R.id.textView3);
         Context mContext = this;
 
 
-        String[] intrebari= new String[100];
-        int i=0;
+        ArrayList<String> intrebari= new ArrayList<String>();   ///declarare exact cate intrebari avem
+
         try {   ///aici se citeste din fisier
             InputStream is = mContext.getAssets().open("Intrebari.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String intrebare;
             while((intrebare=reader.readLine())!=null){
-                intrebari[i++] = intrebare;
+                intrebari.add(intrebare);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        intrebari=random_intrebari(intrebari);
 
-        String randomString= nume[new Random().nextInt(nume.length)];
-        String intrebareInlocuita;
-        intrebareInlocuita=intrebari[0];
-        intrebareInlocuita=intrebareInlocuita.replaceAll("\\*", nume[new Random().nextInt(nume.length)]);
-        intrebareInlocuita=intrebareInlocuita.replaceAll("\\$",nume[new Random().nextInt(nume.length)]);
-        test.setText(intrebareInlocuita);
-        
+
+        ConstraintLayout ecran=(ConstraintLayout) findViewById(R.id.ConstraintLayout);
+
+        ArrayList<String> finalIntrebari = intrebari;
+        finalIntrebari.set(0,replace_name(finalIntrebari.get(0), nume));
+        textBox.setText(finalIntrebari.get(0));
+        ecran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finalIntrebari.set(i,replace_name(finalIntrebari.get(i), nume));
+                textBox.setText(finalIntrebari.get(i));
+                i++;
+            }
+        });
+
+
+
+
 
 
 

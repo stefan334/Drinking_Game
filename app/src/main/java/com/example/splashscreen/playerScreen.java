@@ -13,11 +13,18 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class playerScreen extends AppCompatActivity {
-
+    public String capitalizeFirstLetter(String original) {
+        if (original == null || original.length() == 0) {
+            return original;
+        }
+        return original.substring(0, 1).toUpperCase() + original.substring(1);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -127,19 +134,18 @@ public class playerScreen extends AppCompatActivity {
         startGame.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view){
-                int l=0;
-                for(int i = 0;i<=4;i++){
-                    if(butoane[i]==TRUE){
-                        l++;
-                    }
-                }
-                String[] nume= new String[l];
-                for(int i = 0; i<l; i++){
+
+                String numeDeSchimbat=new String();
+                ArrayList<String> nume= new ArrayList<String>();
+                for(int i = 0; i<butoane.length; i++){
                     if(butoane[i]==TRUE){      ///verifica daca exista jucatorul respectiv
-                        nume[i]= et[i+2].getText().toString();
-                        nume[i].toUpperCase().charAt(0);
+                        nume.add(et[i+2].getText().toString());
+                        numeDeSchimbat=nume.get(i);
+                        numeDeSchimbat=capitalizeFirstLetter(numeDeSchimbat);
+                        nume.set(i,numeDeSchimbat);
 
                     }
+
                 }
 
 
