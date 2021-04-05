@@ -11,7 +11,7 @@
 *, sun-o pe mama ta de pe telefonul tau si spune-i ca ti-ai uitat telefonul in camera ta si daca poate sa verifice.
 *, suna un numar random si cand iti raspunde incepi sa canti "Desteapta-te romane".
 *, suna la o pizzerie si comanda McDonald's.
-*, fa schimb de tricou cu persoana $.
+*, fa schimb de tricou cu $.
 *, scobeste-l in nas pe $.
 *, lasa grupul sa se uite in istoricul tau pentru 2 minute.
 *, tine-te de nas in timp ce canti o melodie la alegere.
