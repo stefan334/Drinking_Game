@@ -8,6 +8,8 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -72,24 +74,25 @@ public class gameActivity extends AppCompatActivity {
         ConstraintLayout ecran=(ConstraintLayout) findViewById(R.id.ConstraintLayout);
 
         ArrayList<String> finalIntrebari = intrebari;
+        //seteaza prima intrebare
         finalIntrebari.set(0,replace_name(finalIntrebari.get(0), nume));
         textBox.setText(finalIntrebari.get(0));
+
         ecran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finalIntrebari.set(i,replace_name(finalIntrebari.get(i), nume));
                 textBox.setText(finalIntrebari.get(i));
                 i++;
+                //animatie pentru text
+                Animation text_animation = AnimationUtils.loadAnimation(mContext,R.anim.text_animation);
+                textBox.startAnimation(text_animation);
             }
         });
-
-
-
-
-
-
-
-
+    }
+    public void function(){
 
     }
+
 }
+

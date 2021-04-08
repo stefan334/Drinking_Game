@@ -141,7 +141,7 @@ public class playerScreen extends AppCompatActivity {
                     if(butoane[i]==TRUE){      ///verifica daca exista jucatorul respectiv
                         nume.add(et[i+2].getText().toString());
                         numeDeSchimbat=nume.get(i);
-                        numeDeSchimbat=capitalizeFirstLetter(numeDeSchimbat);
+                        numeDeSchimbat=capitalizeFirstLetter(numeDeSchimbat); // prima litera mare
                         nume.set(i,numeDeSchimbat);
 
                     }
@@ -150,7 +150,7 @@ public class playerScreen extends AppCompatActivity {
 
 
                 Intent intent = new Intent(playerScreen.this, gameActivity.class);
-                intent.putExtra("NUME", nume);   ///paseaza vectoru de nume catre urmat activitate
+                intent.putExtra("NUME", nume);   ///paseaza vectoru de nume catre urmatoarea activitate
                 startActivity(intent);
 
 

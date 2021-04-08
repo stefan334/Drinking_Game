@@ -5,19 +5,21 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gameActivity">
+    tools:context=".gameActivity"
+    android:background="#ffad5c">
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="671dp"
-        android:layout_height="141dp"
+        android:layout_width="641dp"
+        android:layout_height="290dp"
+        android:fontFamily="@font/baloo"
         android:gravity="center"
         android:text="TextView"
-        android:textColor="#E91E63"
-        android:textSize="36sp"
+        android:textColor="#FFFFF0"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.233" />
+        app:layout_constraintVertical_bias="0.132" />
 </androidx.constraintlayout.widget.ConstraintLayout>
