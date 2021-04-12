@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bangers"
         android:gravity="center_horizontal"
-        android:text="HAI LA BERE !"
+        android:text="Hai sa bem!"
         android:textAllCaps="false"
         android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
