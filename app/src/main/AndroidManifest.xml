@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.splashscreen">
+    package="com.example.HaiSaBem">
 
     <application
         android:allowBackup="true"
@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
-        <activity android:name=".gameActivity"
+        <activity android:name="com.example.HaiSaBem.gameActivity"
             android:screenOrientation="sensorLandscape" />
 
 
-        <activity android:name=".playerScreen" />
-        <activity android:name=".Menu" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.HaiSaBem.playerScreen" />
+        <activity android:name="com.example.HaiSaBem.Menu" />
+        <activity android:name="com.example.HaiSaBem.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.example.splashscreen;
+    package com.example.HaiSaBem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,12 +16,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
-public class gameActivity extends AppCompatActivity {
+    public class gameActivity extends AppCompatActivity {
     private int i=1;
     private String replace_name(String intrebareInlocuita, ArrayList<String> nume){
         Collections.shuffle(nume);

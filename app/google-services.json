@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "880919447783",
+    "project_id": "hai-sa-bem",
+    "storage_bucket": "hai-sa-bem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880919447783:android:0bdf3b5ab9b3677802fa42",
+        "android_client_info": {
+          "package_name": "com.ThunderStudios.HaiSaBem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880919447783-d1rknhsgf2hg839fmkmcfqj27htbofil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBghCNfRl_EnkStQZ5wCC_yqXT2PnC_uaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880919447783-d1rknhsgf2hg839fmkmcfqj27htbofil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
