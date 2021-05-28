@@ -85,6 +85,7 @@ public class online_Lobby extends AppCompatActivity {
         intrebari=random_intrebari(intrebari);
 
         game.setIntrebariArrayList(intrebari);
+        
 
         db.collection("games")
                 .add(game)

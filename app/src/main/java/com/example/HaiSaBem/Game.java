@@ -5,12 +5,38 @@ import java.util.ArrayList;
 public class Game {
    private ArrayList<User> userArrayList;
    private ArrayList<String> intrebariArrayList;
-   private boolean finished;
-   private boolean started;
-   private int playerNumber;
+   private Integer finished;
+    private Integer started;
+    private Integer playerNumber;
+    public Integer getFinished() {
+        return finished;
+    }
+
+    public void setFinished(Integer finished) {
+        this.finished = finished;
+    }
+
+    public Integer getStarted() {
+        return started;
+    }
+
+    public void setStarted(Integer started) {
+        this.started = started;
+    }
+
+    public Integer getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(Integer playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+
     public Game() {
-        finished=false;
-        started=false;
+
+        finished=0;
+        started=0;
         playerNumber=0;
         userArrayList=new ArrayList<>();
         intrebariArrayList = new ArrayList<>();
