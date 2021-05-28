@@ -142,6 +142,7 @@ public class playerScreen extends AppCompatActivity {
                         numeDeSchimbat=capitalizeFirstLetter(numeDeSchimbat); // prima litera mare
                         nume.set(i,numeDeSchimbat);
 
+
                     }
 
                 }
