@@ -75,7 +75,9 @@ import java.util.UUID;
             uuid=UUID.randomUUID();
             randomUUIDString = uuid.toString();
         }
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         for(Map.Entry me : users.entrySet()) {
             db.collection("users")
                     .add(me)

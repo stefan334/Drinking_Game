@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class Game {
    private ArrayList<User> userArrayList;
    private ArrayList<String> intrebariArrayList;
+   private boolean finished;
     public Game() {
+        finished=false;
     }
 
     public Game(ArrayList<User> userArrayList, ArrayList<String> intrebariArrayList) {
