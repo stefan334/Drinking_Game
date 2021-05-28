@@ -12,6 +12,8 @@ public class Game {
         finished=false;
         started=false;
         playerNumber=0;
+        userArrayList=new ArrayList<>();
+        intrebariArrayList = new ArrayList<>();
     }
 
     public Game(ArrayList<User> userArrayList, ArrayList<String> intrebariArrayList) {
