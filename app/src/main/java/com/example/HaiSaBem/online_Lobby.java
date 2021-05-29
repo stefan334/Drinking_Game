@@ -61,7 +61,7 @@ public class online_Lobby extends AppCompatActivity {
     private int jucatori=1;
     DocumentReference gameRef ;
     Game game;
-
+//terminat
     private String replace_name(String intrebareInlocuita, ArrayList<String> nume){
         Collections.shuffle(nume);
         intrebareInlocuita=intrebareInlocuita.replaceAll("\\*", nume.get(0));
