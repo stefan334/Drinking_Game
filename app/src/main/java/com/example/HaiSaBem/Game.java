@@ -3,7 +3,43 @@ package com.example.HaiSaBem;
 import java.util.ArrayList;
 
 public class Game {
-   private ArrayList<User> userArrayList;
+   private User player1;
+
+    public User getPlayer1() {
+        return player1;
+    }
+
+    public void setPlayer1(User player1) {
+        this.player1 = player1;
+    }
+
+    public User getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayer2(User player2) {
+        this.player2 = player2;
+    }
+
+    public User getPlayer3() {
+        return player3;
+    }
+
+    public void setPlayer3(User player3) {
+        this.player3 = player3;
+    }
+
+    public User getPlayer4() {
+        return player4;
+    }
+
+    public void setPlayer4(User player4) {
+        this.player4 = player4;
+    }
+
+    private User player2;
+   private User player3;
+   private User player4;
    private ArrayList<String> intrebariArrayList;
    private Integer finished;
     private Integer started;
@@ -31,6 +67,9 @@ public class Game {
     public void setPlayerNumber(Integer playerNumber) {
         this.playerNumber = playerNumber;
     }
+    public void incrementPlayerNumber(){
+        playerNumber++;
+    }
 
 
     public Game() {
@@ -38,29 +77,23 @@ public class Game {
         finished=0;
         started=0;
         playerNumber=0;
-        userArrayList=new ArrayList<>();
+        player1= new User();
+        player2= new User();
+        player3= new User();
+        player4= new User();
         intrebariArrayList = new ArrayList<>();
     }
 
     public Game(ArrayList<User> userArrayList, ArrayList<String> intrebariArrayList) {
-        this.userArrayList = userArrayList;
+
         this.intrebariArrayList = intrebariArrayList;
     }
 
 
 
-    public ArrayList<User> getUserArrayList() {
-        return userArrayList;
-    }
 
-    public void setUserArrayList(ArrayList<User> userArrayList) {
-        this.userArrayList = userArrayList;
-    }
 
-    public void setUser(User user){
-        userArrayList.add(user);
-        playerNumber++;
-    }
+
 
     public ArrayList<String> getIntrebariArrayList() {
         return intrebariArrayList;

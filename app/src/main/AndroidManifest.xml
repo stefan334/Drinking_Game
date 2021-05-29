@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.HaiSaBem">
 
     <application
@@ -10,16 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
-        <activity android:name=".online_Lobby"></activity>
+        <activity android:name=".online_Lobby">
+            <intent-filter android:autoVerify="true"
+            tools:targetApi="23">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:pathPrefix="/"
+                    android:host="www.example.com"
+                    android:scheme="https"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".gameActivity"
             android:screenOrientation="sensorLandscape" />
         <activity android:name=".playerScreen" />
-        <activity android:name=".Menu" />
+        <activity android:name=".Menu">
+
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

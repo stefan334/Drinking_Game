@@ -1,15 +1,23 @@
 package com.example.HaiSaBem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
 public class Menu extends AppCompatActivity {
 
@@ -61,6 +69,7 @@ public class Menu extends AppCompatActivity {
         });
 
 
+
     }
 
     public void selectName() {
@@ -74,6 +83,8 @@ public class Menu extends AppCompatActivity {
         dialog = dialogBuilder.create();
         dialog.show();
 
+
+
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,9 +94,6 @@ public class Menu extends AppCompatActivity {
 
 
         goButton.setOnClickListener(new View.OnClickListener() {
-
-
-
 
             public void onClick(View v){
 
@@ -99,8 +107,9 @@ public class Menu extends AppCompatActivity {
                     errorToast.show();
                 }else{
 
+                   ///IF NO DYNAMIC LINK THEN DO THIS
                 intent.putExtra("NUME", name);   ///paseaza vectoru de nume catre urmatoarea activitate
-
+            // ELSE IF DYNAMIC LINK DO SOMETHING ELSE
 
 
                 startActivity(intent);
