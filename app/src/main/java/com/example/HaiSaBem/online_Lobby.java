@@ -5,9 +5,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +40,9 @@ public class online_Lobby extends AppCompatActivity {
 
     }
 
+
+
+
     private ArrayList<String> random_intrebari(ArrayList<String> intrebari){
         Collections.shuffle(intrebari);
         return intrebari;
@@ -56,6 +62,21 @@ public class online_Lobby extends AppCompatActivity {
         TextView player1Textview;
         player1Textview = findViewById(R.id.player1Textview);
         player1Textview.setText(player1);
+
+        Button sharebtn;
+        sharebtn = (Button) findViewById(R.id.sharebtn);
+        sharebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent shareIntent = new Intent (Intent.ACTION_SEND);
+               shareIntent.setType("text/plain");
+               String shareBody="Copiaza linkul :-https://www.google.com/";
+               shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+               startActivity(Intent.createChooser(shareIntent,"Share Using"));
+
+            }
+        });
+
 
 
 
