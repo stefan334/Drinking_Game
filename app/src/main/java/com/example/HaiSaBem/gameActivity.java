@@ -57,43 +57,11 @@ import java.util.UUID;
         getSupportActionBar();
         getSupportActionBar().hide();
 
+
         //hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ArrayList<String> nume = getIntent().getStringArrayListExtra("NUME");
 
-        Map<String, String> users = new HashMap<>();
-
-        UUID uuid = UUID.randomUUID();
-        String randomUUIDString = uuid.toString();
-        ArrayList<User> userArrayList= new ArrayList<>();
-        User user= new User();
-        for(int i = 0; i< nume.size();i++){
-            user.setID(randomUUIDString);
-            user.setName(nume.get(i));
-            userArrayList.set(i, user);
-            users.put(user.getID(), user.getName());
-            uuid=UUID.randomUUID();
-            randomUUIDString = uuid.toString();
-        }
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        for(Map.Entry me : users.entrySet()) {
-            db.collection("users")
-                    .add(me)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d("FragmentActivity", "DocumentSnapshot added with ID: " + documentReference.getId());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("FragmentActivity", "Error adding document", e);
-                        }
-                    });
-        }
 
 
 
