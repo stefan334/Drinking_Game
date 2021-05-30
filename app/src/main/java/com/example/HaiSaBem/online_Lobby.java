@@ -61,6 +61,8 @@ public class online_Lobby extends AppCompatActivity {
     private int jucatori=1;
     DocumentReference gameRef ;
     Game game;
+
+
 //terminat
     private String replace_name(String intrebareInlocuita, ArrayList<String> nume){
         Collections.shuffle(nume);
@@ -74,7 +76,7 @@ public class online_Lobby extends AppCompatActivity {
         Collections.shuffle(intrebari);
         return intrebari;
     }
-
+    Button sharebtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +90,30 @@ public class online_Lobby extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_online_lobby);
         useri=new ArrayList<>();
+        sharebtn = (Button) findViewById(R.id.sharebtn);
+        sharebtn.setOnClickListener(new View.OnClickListener(){
+          @Override
+          public void onClick(View v)
+          { Intent shareIntent = new Intent (Intent.ACTION_SEND);
+          shareIntent.setType("text/plain");
+          String shareBody = "Copiaza link-ul:-https://www.google.com/";
+
+          shareIntent.putExtra(Intent.EXTRA_SUBJECT,shareBody);
+          startActivity(Intent.createChooser(shareIntent,"Share using"));
+
+
+
+          }
+
+
+
+
+
+    });
+
+
+
+
 
 
         FirebaseDynamicLinks.getInstance()
