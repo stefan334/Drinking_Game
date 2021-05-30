@@ -59,8 +59,9 @@ public class online_Lobby extends AppCompatActivity {
     private TextView player1Textview;
     private ArrayList<User> useri;
     private int jucatori=1;
-    DocumentReference gameRef ;
-    Game game;
+    private DocumentReference gameRef ;
+    private Game game;
+    private Uri _link;
 
 
 //terminat
@@ -76,7 +77,7 @@ public class online_Lobby extends AppCompatActivity {
         Collections.shuffle(intrebari);
         return intrebari;
     }
-    Button sharebtn;
+    private Button sharebtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,26 +91,8 @@ public class online_Lobby extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_online_lobby);
         useri=new ArrayList<>();
+
         sharebtn = (Button) findViewById(R.id.sharebtn);
-        sharebtn.setOnClickListener(new View.OnClickListener(){
-          @Override
-          public void onClick(View v)
-          { Intent shareIntent = new Intent (Intent.ACTION_SEND);
-          shareIntent.setType("text/plain");
-          String shareBody = "Copiaza link-ul:-https://www.google.com/";
-
-          shareIntent.putExtra(Intent.EXTRA_SUBJECT,shareBody);
-          startActivity(Intent.createChooser(shareIntent,"Share using"));
-
-
-
-          }
-
-
-
-
-
-    });
 
 
 
@@ -126,6 +109,7 @@ public class online_Lobby extends AppCompatActivity {
                         if (pendingDynamicLinkData != null) {
                             deepLink = pendingDynamicLinkData.getLink();
                             String link= deepLink.toString();
+                            _link=deepLink;
                             link =link.substring(link.indexOf("=")+1);
                             FirebaseFirestore db= FirebaseFirestore.getInstance();
                             gameRef = db.collection("games").document(link);
@@ -200,9 +184,31 @@ public class online_Lobby extends AppCompatActivity {
                     }
                 });
 
+        sharebtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Intent shareIntent = new Intent (Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                String shareBody = "Da click pe link pentru a te alatura: " + _link;
+
+                shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                startActivity(Intent.createChooser(shareIntent,"Share using "));
+
+
+
+            }
+
+
+
+
+
+        });
 
 
     }
+
+
 
     public void updateView(DocumentSnapshot snapshot){
          useri = new ArrayList<>();
@@ -369,8 +375,8 @@ public class online_Lobby extends AppCompatActivity {
                                 .build())
                 .setSocialMetaTagParameters(
                         new DynamicLink.SocialMetaTagParameters.Builder()
-                                .setTitle("Example of a Dynamic Link")
-                                .setDescription("This link works whether the app is installed or not!")
+                                .setTitle("Haide bai sa bem ca nu se mai poate")
+                                .setDescription("Sa inceapa bauta").setImageUrl(Uri.parse("https://www.example.com/beer.png"))
                                 .build())
                 .buildShortDynamicLink()
                 .addOnCompleteListener(this, new OnCompleteListener<ShortDynamicLink>() {
@@ -378,6 +384,7 @@ public class online_Lobby extends AppCompatActivity {
                     public void onComplete(@NonNull Task<ShortDynamicLink> task) {
                         if (task.isSuccessful()) {
                             // Short link created
+                            _link=task.getResult().getShortLink();
                             System.out.println(task.getResult().getShortLink());
                             Uri shortLink = task.getResult().getShortLink();
                             Uri flowchartLink = task.getResult().getPreviewLink();
