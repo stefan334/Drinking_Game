@@ -176,27 +176,6 @@ public class online_Lobby extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     public void updateView(DocumentSnapshot snapshot){
