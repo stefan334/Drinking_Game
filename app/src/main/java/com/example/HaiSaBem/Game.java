@@ -42,7 +42,7 @@ public class Game {
    private User player4;
    private ArrayList<String> intrebariArrayList;
    private Integer finished;
-    private Integer started;
+    private Long started;
     private Integer playerNumber;
     public Integer getFinished() {
         return finished;
@@ -52,11 +52,11 @@ public class Game {
         this.finished = finished;
     }
 
-    public Integer getStarted() {
+    public Long getStarted() {
         return started;
     }
 
-    public void setStarted(Integer started) {
+    public void setStarted(Long started) {
         this.started = started;
     }
 
@@ -75,7 +75,7 @@ public class Game {
     public Game() {
 
         finished=0;
-        started=0;
+        started= 0L;
         playerNumber=0;
         player1= new User();
         player2= new User();
