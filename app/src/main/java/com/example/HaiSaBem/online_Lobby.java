@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -37,6 +38,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.Array;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -147,6 +150,7 @@ public class online_Lobby extends AppCompatActivity {
                                 }
                             });
                             hostCreated();
+                            System.out.println(game.getIntrebariArrayList());
 
                         }
                         // Handle the deep link. For example, open the linked
@@ -204,8 +208,8 @@ public class online_Lobby extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gameRef.update("started", 1);
-                Intent intent = new Intent(online_Lobby.this, gameActivity.class);
-                startActivity(intent);
+
+
             }
 
         });
@@ -229,9 +233,12 @@ public class online_Lobby extends AppCompatActivity {
                 if(game.getStarted()!=0L)
                 {
                     Intent intent = new Intent(online_Lobby.this, gameActivity.class);
+                    intent.putExtra("TIP", "online");
+                    intent.putExtra("JOC",  game);
+                    game.setId(snapshot.getReference().getPath().substring(snapshot.getReference().getPath().indexOf("/")));
                     startActivity(intent);
                 }
-                
+
                 game.setPlayerNumber(Integer.valueOf(snapshot.get("playerNumber").toString()));
                 Map<String, String> user1 = (Map<String, String>) snapshot.get("player1");
                 Map<String, String> user2 = (Map<String, String>) snapshot.get("player2");
@@ -370,7 +377,7 @@ public class online_Lobby extends AppCompatActivity {
         user.setName(player1);
 
 
-        Game game = new Game();
+
         game.setPlayer1(user);
         game.setPlayerNumber(1);
 
@@ -389,7 +396,6 @@ public class online_Lobby extends AppCompatActivity {
         intrebari = random_intrebari(intrebari);
 
         game.setIntrebariArrayList(intrebari);
-
 
         gameRef.set(game);
 

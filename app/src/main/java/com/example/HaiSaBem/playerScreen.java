@@ -150,6 +150,7 @@ public class playerScreen extends AppCompatActivity {
 
                 Intent intent = new Intent(playerScreen.this, gameActivity.class);
                 intent.putExtra("NUME", nume);   ///paseaza vectoru de nume catre urmatoarea activitate
+                intent.putExtra("TIP", "offline");   ///paseaza vectoru de nume catre urmatoarea activitate
                 startActivity(intent);
 
 

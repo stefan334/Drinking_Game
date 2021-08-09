@@ -1,9 +1,16 @@
 package com.example.HaiSaBem;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Game {
+public class Game implements Serializable {
    private User player1;
+   private int questionNr;
+   private String id;
+
 
     public User getPlayer1() {
         return player1;
@@ -21,6 +28,14 @@ public class Game {
         this.player2 = player2;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public User getPlayer3() {
         return player3;
     }
@@ -35,6 +50,14 @@ public class Game {
 
     public void setPlayer4(User player4) {
         this.player4 = player4;
+    }
+
+    public int getQuestionNr() {
+        return questionNr;
+    }
+
+    public void setQuestionNr(int questionNr) {
+        this.questionNr = questionNr;
     }
 
     private User player2;
@@ -73,7 +96,7 @@ public class Game {
 
 
     public Game() {
-
+        questionNr=0;
         finished=0;
         started= 0L;
         playerNumber=0;
@@ -101,5 +124,10 @@ public class Game {
 
     public void setIntrebariArrayList(ArrayList<String> intrebariArrayList) {
         this.intrebariArrayList = intrebariArrayList;
+    }
+
+
+    public void setQuestionNrLong(Long questionNr) {
+        this.questionNr = questionNr.intValue();
     }
 }
