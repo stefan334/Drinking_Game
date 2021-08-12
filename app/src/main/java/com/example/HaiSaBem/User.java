@@ -2,11 +2,16 @@ package com.example.HaiSaBem;
 
 import java.io.Serializable;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 public class User implements Serializable {
     private String ID;
     private String name;
 
     public User() {
+        name= new String();
+
     }
 
     public void setID(String ID) {
@@ -28,5 +33,10 @@ public class User implements Serializable {
 
     public String getID() {
         return ID;
+    }
+    public boolean userExists(){
+        if(!name.equals(""))
+            return TRUE;
+        return FALSE;
     }
 }

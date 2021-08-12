@@ -32,6 +32,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 
 
 import java.io.BufferedReader;
@@ -61,6 +62,10 @@ public class online_Lobby extends AppCompatActivity {
     private DocumentReference gameRef;
     private Game game;
     private Uri _link;
+    private ListenerRegistration listener1;
+    private ListenerRegistration listener2;
+    private ListenerRegistration listener3;
+
 
 
     //terminat
@@ -110,7 +115,7 @@ public class online_Lobby extends AppCompatActivity {
                             link = link.substring(link.indexOf("=") + 1);
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
                             gameRef = db.collection("games").document(link);
-                            gameRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                             listener1 = gameRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable DocumentSnapshot snapshot,
                                                     @Nullable FirebaseFirestoreException e) {
@@ -132,7 +137,7 @@ public class online_Lobby extends AppCompatActivity {
                         } else {
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
                             gameRef = db.collection("games").document();
-                            gameRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                             listener3 =  gameRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable DocumentSnapshot snapshot,
                                                     @Nullable FirebaseFirestoreException e) {
@@ -166,7 +171,7 @@ public class online_Lobby extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         gameRef = db.collection("games").document();
-                        gameRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                        listener2=  gameRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                             @Override
                             public void onEvent(@Nullable DocumentSnapshot snapshot,
                                                 @Nullable FirebaseFirestoreException e) {
@@ -220,6 +225,7 @@ public class online_Lobby extends AppCompatActivity {
 
     public void updateView(DocumentSnapshot snapshot) {
         useri = new ArrayList<>();
+        game.setIntrebariArrayList((ArrayList<String>) snapshot.get("intrebariArrayList"));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         player1Textview = findViewById(R.id.player1Textview);
         player2Textview = findViewById(R.id.player2Textview);
@@ -230,14 +236,7 @@ public class online_Lobby extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 game.setStarted((Long) snapshot.get("started"));
 
-                if(game.getStarted()!=0L)
-                {
-                    Intent intent = new Intent(online_Lobby.this, gameActivity.class);
-                    intent.putExtra("TIP", "online");
-                    intent.putExtra("JOC",  game);
-                    game.setId(snapshot.getReference().getPath().substring(snapshot.getReference().getPath().indexOf("/")));
-                    startActivity(intent);
-                }
+
 
                 game.setPlayerNumber(Integer.valueOf(snapshot.get("playerNumber").toString()));
                 Map<String, String> user1 = (Map<String, String>) snapshot.get("player1");
@@ -272,6 +271,21 @@ public class online_Lobby extends AppCompatActivity {
                 player3Textview.setText(game.getPlayer3().getName());
 
                 player4Textview.setText(game.getPlayer4().getName());
+                if(game.getStarted()!=0L)
+                {
+                    Intent intent = new Intent(online_Lobby.this, gameActivity.class);
+                    intent.putExtra("TIP", "online");
+                    intent.putExtra("JOC",  game);
+                    game.setId(snapshot.getReference().getPath().substring(snapshot.getReference().getPath().indexOf("/")));
+                    if(listener1    !=null)
+                    listener1.remove();
+                    if(listener2!=null)
+                    listener2.remove();
+                    if(listener3!=null)
+                    listener3.remove();
+
+                    startActivity(intent);
+                }
 
             }
         });

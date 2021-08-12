@@ -10,8 +10,20 @@ public class Game implements Serializable {
    private User player1;
    private int questionNr;
    private String id;
+    private User player2;
+   private User player3;
+   private User player4;
+   private ArrayList<String> intrebariArrayList;
+   private Integer finished;
+    private Long started;
+    private Integer playerNumber;
+    public ArrayList<String> getIntrebariArrayList() {
+        return intrebariArrayList;
+    }
 
-
+    public Integer getFinished() {
+        return finished;
+    }
     public User getPlayer1() {
         return player1;
     }
@@ -58,17 +70,6 @@ public class Game implements Serializable {
 
     public void setQuestionNr(int questionNr) {
         this.questionNr = questionNr;
-    }
-
-    private User player2;
-   private User player3;
-   private User player4;
-   private ArrayList<String> intrebariArrayList;
-   private Integer finished;
-    private Long started;
-    private Integer playerNumber;
-    public Integer getFinished() {
-        return finished;
     }
 
     public void setFinished(Integer finished) {
@@ -118,9 +119,6 @@ public class Game implements Serializable {
 
 
 
-    public ArrayList<String> getIntrebariArrayList() {
-        return intrebariArrayList;
-    }
 
     public void setIntrebariArrayList(ArrayList<String> intrebariArrayList) {
         this.intrebariArrayList = intrebariArrayList;
