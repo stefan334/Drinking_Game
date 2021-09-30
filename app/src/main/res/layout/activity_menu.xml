@@ -11,18 +11,25 @@
         android:id="@+id/playButton"
         android:layout_width="129dp"
         android:layout_height="59dp"
+        android:fontFamily="@font/baloo"
         android:text="Offline"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:backgroundTint="#3AC51A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.534" />
 
     <Button
         android:id="@+id/onlineButton"
         android:layout_width="129dp"
         android:layout_height="59dp"
+        android:fontFamily="@font/baloo"
         android:text="Online"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:backgroundTint="#960261"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/playButton"
